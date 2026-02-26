@@ -9,40 +9,104 @@ public class BST implements BSTInterface
 {
     private TreeNode root;
 
-	public BST()
+    public BST()
+    {
+        root = null;
+    }
+
+    public void add(Comparable obj)
+    {
+        root = addHelper(root, obj);
+    }
+
+    private TreeNode addHelper(TreeNode subroot, Comparable obj)
+    {
+        if (subroot == null)
+        {
+            return new TreeNode(obj);
+        }
+        Comparable temp = subroot.getValue();
+        if (temp.compareTo(obj) >= 0)
+        {
+            subroot.setLeft(addHelper(subroot.getLeft(), obj));
+        }
+        else
+        {
+            subroot.setRight(addHelper(subroot.getRight(), obj));
+        }
+        return subroot;
+    }
+
+	public boolean find(Comparable obj)
 	{
-		root = null;
+		TreeNode currentNode = root;
+
+		while(currentNode != null)
+		{
+
+			if(currentNode.getValue().compareTo(obj) == 0)
+			{
+				return true;
+			}
+
+			else if(currentNode.getValue().compareTo(obj) > 0)
+			{
+				currentNode = currentNode.getLeft();
+			}
+
+			else if(currentNode.getValue().compareTo(obj) < 0)
+			{
+				currentNode = currentNode.getRight();
+			}
+		}
+		return false;
 	}
 
-    public void add(Object obj)
+
+	//all print methods are below 
+
+    public void printInOrder()
     {
-        if(root == null)
-		{
-			root = new TreeNode(obj);
-		}
+        inOrderHelper(root);
+    }//end inOrder
 
-		else if(root.getValue().compareTo(obj) >= 0)
-		{
-			if(root.getLeft() != null)
-			{
-				obj = root.getLeft();
-			}
-			else
-			{
-				root.setLeft(new TreeNode(obj));
-			}
-		}
+    private void inOrderHelper(TreeNode subroot)
+    {
+        if (subroot != null)
+        {
+            inOrderHelper(subroot.getLeft());
+            System.out.println(subroot.getValue());
+            inOrderHelper(subroot.getRight());
+        }//end if
+    }//end inOrderHelper
 
-		else if(root.getValue().compareTo(obj) < 0)
-		{
-			if(root.getRight() != null)
-			{
-				obj = root.getRight();
-			}
-			else
-			{
-				root.setRight(new TreeNode(obj));
-			}
-		}
-    }
-}
+	public void printPreOrder()
+    {
+        preOrderHelper(root);
+    }//end PreOrder
+
+	private void preOrderHelper(TreeNode subroot)
+    {
+        if (subroot != null)
+        {
+			System.out.println(subroot.getValue());
+            preOrderHelper(subroot.getLeft());
+            preOrderHelper(subroot.getRight());
+        }//end if
+    }//end PreOrderHelper
+
+	public void printPostOrder()
+    {
+        postOrderHelper(root);
+    }//end PostOrder
+
+	private void postOrderHelper(TreeNode subroot)
+    {
+        if (subroot != null)
+        {
+            postOrderHelper(subroot.getLeft());
+            postOrderHelper(subroot.getRight());
+			System.out.println(subroot.getValue());
+        }//end if
+    }//end postOrderHelper
+}//end BST
