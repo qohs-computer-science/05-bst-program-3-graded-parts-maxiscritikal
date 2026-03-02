@@ -62,7 +62,7 @@ public class BST implements BSTInterface
 		return false;
 	}//end find
 
-    public boolean delete(Object old)
+    public boolean delete(Comparable old)
     {
         TreeNode currentNode = root;
 	    TreeNode parent = null;
