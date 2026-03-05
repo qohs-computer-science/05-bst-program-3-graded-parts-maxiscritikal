@@ -233,6 +233,32 @@ public class BST implements BSTInterface
         }//end else
     }//end sizeHelper
 
+    public boolean isEmpty()
+    {
+        if(root == null)
+        {
+            return true;
+        }//end if
+        else
+        {
+            return false;
+        }//end else
+    }//end isEmpty
+
+    public boolean replace(Comparable old, Comparable toAdd)
+    {
+        if(find(old))
+        {
+            
+            return true;
+        }//end if
+
+        else
+        {
+            return false;
+        }//end else
+    }//end replace
+
 
 
 
