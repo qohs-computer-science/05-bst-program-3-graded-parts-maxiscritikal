@@ -215,6 +215,24 @@ public class BST implements BSTInterface
         }//end else
     }//end deleteHelper
 
+    public int size()
+    {
+        return sizeHelper(root);
+    }//end size
+
+    public int sizeHelper(TreeNode subroot)
+    {
+        if (subroot == null)
+        {
+            return 0;
+        }//end if
+
+        else
+        {
+            return 1 + sizeHelper(subroot.getLeft()) + sizeHelper(subroot.getRight());
+        }//end else
+    }//end sizeHelper
+
 
 
 

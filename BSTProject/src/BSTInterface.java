@@ -1,6 +1,6 @@
 public interface BSTInterface
 {
-	//public int size();
+	public int size();
 	// returns the current number of nodes that are located in the tree
 
 	//public boolean isEmpty();

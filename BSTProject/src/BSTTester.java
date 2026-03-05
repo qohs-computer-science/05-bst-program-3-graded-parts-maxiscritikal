@@ -84,5 +84,17 @@
     testCase4.printPreOrder();
     System.out.println("");
     testCase4.printPostOrder();
+
+    BST testCase5 = new BST();
+    System.out.println("");
+    System.out.println("");
+    System.out.println("Testing Size");
+    System.out.println("");
+    testCase5.add(6);
+    testCase5.add(7);
+    testCase5.add(4);
+    testCase5.add(5);
+    testCase5.add(1);
+    System.out.println(testCase5.size());
   }
 }
