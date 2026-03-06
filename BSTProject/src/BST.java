@@ -249,7 +249,8 @@ public class BST implements BSTInterface
     {
         if(find(old))
         {
-            
+            delete(old);
+            add(toAdd);
             return true;
         }//end if
 
